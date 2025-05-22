@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "bt5aqRxTXqI=",
+  "dgSpecHash": "miuR3prOudQ=",
   "success": true,
   "projectFilePath": "/Users/emreyilmaz/Desktop/TaskTrackerApiDemo/TaskTrackerApi/TaskTrackerApi.csproj",
   "expectedPackageFiles": [
-    "/Users/emreyilmaz/.nuget/packages/microsoft.aspnetcore.openapi/9.0.5/microsoft.aspnetcore.openapi.9.0.5.nupkg.sha512",
     "/Users/emreyilmaz/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/Users/emreyilmaz/.nuget/packages/microsoft.openapi/1.6.23/microsoft.openapi.1.6.23.nupkg.sha512",
     "/Users/emreyilmaz/.nuget/packages/swashbuckle.aspnetcore/8.1.1/swashbuckle.aspnetcore.8.1.1.nupkg.sha512",
