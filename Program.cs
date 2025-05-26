@@ -19,7 +19,7 @@ builder.Services.AddSwaggerGen(options =>
 var app = builder.Build();
 
 // ✅ Geliştirme ortamında Swagger UI göster
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
