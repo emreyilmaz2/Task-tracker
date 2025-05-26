@@ -1,6 +1,5 @@
-name: .NET Core CI
+name: .NET Core CI/CD
 
-# 🔔 Ne zaman çalışsın?
 on:
   push:
     branches: [ main ]
@@ -8,8 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest  # GitHub’ın bize verdiği Linux makine
+  build-and-deploy:
+    runs-on: ubuntu-latest
 
     steps:
     - name: 📥 Kodları çek
@@ -28,3 +27,13 @@ jobs:
 
     - name: ✅ Test
       run: dotnet test --no-build --verbosity normal
+
+    - name: 🚀 Yayın için paketle
+      run: dotnet publish -c Release -o ./publish
+
+    - name: ☁️ Azure Web App'e deploy et
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: tasktracker               
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: ./publish
