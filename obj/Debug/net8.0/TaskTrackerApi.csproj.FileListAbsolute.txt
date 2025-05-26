@@ -29,3 +29,4 @@
 /Users/emreyilmaz/Desktop/TaskTrackerApiDemo/TaskTrackerApi/obj/Debug/net8.0/TaskTrackerApi.pdb
 /Users/emreyilmaz/Desktop/TaskTrackerApiDemo/TaskTrackerApi/obj/Debug/net8.0/TaskTrackerApi.genruntimeconfig.cache
 /Users/emreyilmaz/Desktop/TaskTrackerApiDemo/TaskTrackerApi/obj/Debug/net8.0/ref/TaskTrackerApi.dll
+/Users/emreyilmaz/Desktop/TaskTrackerApiDemo/TaskTrackerApi/bin/Debug/net8.0/TaskTrackerApi.staticwebassets.runtime.json
