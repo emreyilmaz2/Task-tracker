@@ -10,12 +10,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.1" />
   </ItemGroup>
 
-  <ItemGroup>
-  <Content Include="wwwroot\**\*.*">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-  </Content>
-</ItemGroup>
-
-
 </Project>
