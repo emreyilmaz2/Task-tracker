@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dog in the Garden</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to top, #86efac 70%, #a5f3fc 30%);
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+
+    .dog {
+      position: absolute;
+      bottom: 20px;
+      left: -150px;
+      width: 120px;
+      animation: walk 10s linear infinite;
+    }
+
+    @keyframes walk {
+      0% { left: -150px; }
+      100% { left: 100vw; }
+    }
+
+    .title {
+      position: absolute;
+      top: 30px;
+      width: 100%;
+      text-align: center;
+      font-size: 2em;
+      color: #065f46;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">🐕 Bahçede Gezen Köpek</div>
+  <img class="dog" src="https://media.giphy.com/media/cD9U6C04Quzmw/giphy.gif" alt="Dog walking">
+</body>
+</html>
