@@ -28,10 +28,5 @@ namespace TaskTrackerApi.Tests
             };
             Assert.Equal("Bug fix", task.Description);
         }
-        [Fact]
-        public void ThisTestShouldFail()
-        {
-            Assert.Equal(1, 2);
-        }
     }
 }
