@@ -21,13 +21,11 @@ namespace TaskTrackerApi.Tests
         [Fact]
         public void NewTaskItem_ShouldHaveDescriptionSetCorrectly()
         {
-            // Arrange
             var task = new TaskItem
             {
                 Id = 2,
                 Description = "Bug fix"
             };
-            // Assert
             Assert.Equal("Bug fix", task.Description);
         }
     }
