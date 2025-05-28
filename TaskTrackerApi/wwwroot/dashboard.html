@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TaskTracker Deployment Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f2027;  /* fallback for old browsers */
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      color: #fff;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .deploy-list {
+      margin-top: 30px;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    .deploy-card {
+      background-color: rgba(255,255,255,0.05);
+      padding: 20px;
+      margin-bottom: 15px;
+      border-left: 8px solid #00ffae;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+
+    .deploy-card.failed {
+      border-left-color: #ff4c4c;
+    }
+
+    .deploy-card.pending {
+      border-left-color: #ffc107;
+    }
+
+    .deploy-header {
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+
+    .deploy-meta {
+      margin-top: 6px;
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 0.8em;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 TaskTracker CI/CD Dashboard</h1>
+  <p>Son yayınlanan versiyonların durumu</p>
+
+  <div class="deploy-list">
+    <div class="deploy-card">
+      <div class="deploy-header">v1.0.5 - Başarılı 🎉</div>
+      <div class="deploy-meta">Yayımlandı: 27 Mayıs 2025, 00:43 | Commit: `add-dashboard`</div>
+    </div>
+
+    <div class="deploy-card failed">
+      <div class="deploy-header">v1.0.4 - Hatalı ❌</div>
+      <div class="deploy-meta">Yayımlanamadı: 26 Mayıs 2025, 18:12 | Commit: `test-failure-demo`</div>
+    </div>
+
+    <div class="deploy-card pending">
+      <div class="deploy-header">v1.0.3 - Beklemede ⏳</div>
+      <div class="deploy-meta">Bekliyor: PR #42 | Commit: `add-dog-page`</div>
+    </div>
+  </div>
+
+  <footer>TaskTracker API &middot; CI/CD powered by GitHub Actions & Azure Web App</footer>
+</body>
+</html>
