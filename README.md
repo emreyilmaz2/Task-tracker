@@ -40,4 +40,4 @@ dotnet test
 # Yayın için
 dotnet publish -c Release
 
-Canlı Demo : https://tasktracker-awdjd3b9d3ezayb4.switzerlandnorth-01.azurewebsites.net//index.html
+Canlı Demo : https://tasktracker-awdjd3b9d3ezayb4.switzerlandnorth-01.azurewebsites.net/index.html
