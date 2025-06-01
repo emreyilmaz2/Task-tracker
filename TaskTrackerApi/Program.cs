@@ -13,6 +13,16 @@ builder.Services.AddSwaggerGen(options =>
         Version = "v1"
     });
 });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactClient",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:5173") // Vite'ın portu
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
 
 var app = builder.Build();
 
@@ -21,7 +31,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowReactClient");
 app.UseStaticFiles();
 app.UseAuthorization();
 app.MapControllers();
