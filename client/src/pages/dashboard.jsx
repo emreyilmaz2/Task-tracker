@@ -1,45 +1,70 @@
 // client/src/pages/Dashboard.jsx
-import { useEffect, useState } from 'react';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/Dashboard.css";
 
-function Dashboard() {
-  const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
+export default function Dashboard() {
+  const [tasks, setTasks] = useState([
+    { id: 1, text: "Örnek görev 1" },
+    { id: 2, text: "Örnek görev 2" },
+  ]);
+  const [input, setInput] = useState("");
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch('http://localhost:5230/api/task')
-      .then((res) => res.json())
-      .then((data) => {
-        setTasks(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Veri çekme hatası:", err);
-        setLoading(false);
-      });
-  }, []);
+  function addTask(e) {
+    e.preventDefault();
+    if (!input.trim()) return;
+    setTasks([...tasks, { id: Date.now(), text: input }]);
+    setInput("");
+  }
+
+  function removeTask(id) {
+    setTasks(tasks.filter(t => t.id !== id));
+  }
+
+  const handleLogout = () => {
+    // Gerçek bir uygulamada burada kullanıcı token/session temizlenir
+    // localStorage.removeItem('userToken');
+    navigate("/login");
+  };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold mb-4 text-center">Task Dashboard</h1>
-
-      {loading ? (
-        <p className="text-center text-gray-500">Loading tasks...</p>
-      ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {tasks.map((task) => (
-            <div key={task.id} className="bg-white rounded shadow p-4 border">
-              <h2 className="text-xl font-semibold">{task.description}</h2>
-              <p className="text-gray-600">Assigned to: {task.assignedTo}</p>
-              <p className="text-gray-500 text-sm">Due: {new Date(task.dueDate).toLocaleDateString()}</p>
-              <p className={`mt-2 font-medium ${task.isDone ? 'text-green-600' : 'text-red-600'}`}>
-                {task.isDone ? 'Completed' : 'Pending'}
-              </p>
-            </div>
+    <div className="dashboard-bg">
+      <div className="w-full max-w-3xl flex justify-end px-4">
+         <button
+          onClick={handleLogout}
+          className="dashboard-logout-btn mt-4 mb-4"
+        >
+          Logout
+        </button>
+      </div>
+      <div className="dashboard-card">
+        <h1 className="dashboard-title">Welcome to your Dashboard</h1>
+        <p className="dashboard-desc">Manage your tasks efficiently and boost your productivity!</p>
+        <form onSubmit={addTask} className="dashboard-form">
+          <input
+            className="dashboard-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            placeholder="Yeni görev ekle..."
+            maxLength={60}
+          />
+          <button className="dashboard-btn" type="submit">
+            Ekle
+          </button>
+        </form>
+        <ul className="dashboard-list">
+          {tasks.length === 0 && (
+            <li className="text-center text-gray-400 italic">Henüz görev yok. Hemen bir tane ekleyin!</li>
+          )}
+          {tasks.map(task => (
+            <li key={task.id} className="dashboard-task">
+              <span className="dashboard-task-text">{task.text}</span>
+              <button onClick={() => removeTask(task.id)} className="dashboard-task-remove">Sil</button>
+            </li>
           ))}
-        </div>
-      )}
+        </ul>
+      </div>
     </div>
   );
 }
-
-export default Dashboard;
