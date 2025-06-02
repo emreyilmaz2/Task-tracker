@@ -37,16 +37,24 @@ public class UserController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] UserLoginDto dto)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
-        if (user == null)
-            return Unauthorized("User not found.");
+        try
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
+            if (user == null)
+                return Unauthorized("User not found.");
 
-        var passwordHash = HashPassword(dto.Password);
-        if (user.PasswordHash != passwordHash)
-            return Unauthorized("Invalid password.");
+            var passwordHash = HashPassword(dto.Password);
+            if (user.PasswordHash != passwordHash)
+                return Unauthorized("Invalid password.");
 
-        return Ok(new { user.Id, user.FullName, user.Email });
+            return Ok(new { user.Id, user.FullName, user.Email });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"EXCEPTION: {ex.Message} | {ex.InnerException?.Message}");
+        }
     }
+
 
     private string HashPassword(string password)
     {

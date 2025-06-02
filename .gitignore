@@ -1,4 +1,6 @@
 *.db
 bin/
 obj/
+TaskTrackerApi/bin/
+TaskTrackerApi/obj/
 
