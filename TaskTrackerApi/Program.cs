@@ -20,11 +20,42 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactClient",
         builder =>
         {
-            builder.WithOrigins("http://localhost:5173") // Vite'ın portu
-                   .AllowAnyHeader()
-                   .AllowAnyMethod();
+            builder.WithOrigins(
+                "http://localhost:5173",
+                "https://task-tracker-eta-bay.vercel.app/",
+                "https://task-tracker-git-feature-0181f9-emre-yilmazs-projects-93dea153.vercel.app/",
+                ) // Vite'ın portu
+                .AllowAnyHeader()
+                .AllowAnyMethod();
         });
 });
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactClient", builder =>
+    {
+        builder.WithOrigins(
+            "http://localhost:5173",
+            "https://task-tracker.vercel.app",
+            "https://task-tracker-git-feature-0181f9-emre-yilmazs-projects-93dea153.vercel.app"
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
