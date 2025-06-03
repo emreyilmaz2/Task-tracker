@@ -37,8 +37,8 @@ builder.Services.AddCors(options =>
     {
         builder.WithOrigins(
             "http://localhost:5173",
-            "https://task-tracker.vercel.app",
-            "https://task-tracker-git-feature-0181f9-emre-yilmazs-projects-93dea153.vercel.app"
+            "https://task-tracker-client-iota.vercel.app",
+            "https://task-tracker-client-git-main-emre-yilmazs-projects-93dea153.vercel.app"
         )
         .AllowAnyHeader()
         .AllowAnyMethod();
